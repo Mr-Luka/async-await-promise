@@ -17,12 +17,12 @@ function makePizza (toppings = []) {
      });
 }
 
-async function go (){
+async function goo (){
     console.log("starting");
     await wait(2000)
     console.log("ending");
 }
-// go()
+// goo()
 
 async function makeDinner(){
     const pizzaPromise1 = makePizza(["vegan pepperoni"]);
@@ -32,3 +32,52 @@ async function makeDinner(){
 }
 makeDinner()
 
+
+const go = document.querySelector(".go");
+
+
+
+function animate(e){
+    const el = e.currentTarget;
+    el.textContent = "Go!"
+    wait(200)
+    .then(()=>{
+        el.classList.add("circle");
+        return wait(500)
+    })
+    .then(()=> {
+        el.classList.add("red")
+        return wait(250)
+    })
+    .then(()=>{
+        el.classList.remove("circle");
+        return wait(500)
+    })
+    .then(()=> {
+        el.classList.remove("red")
+        el.classList.add("purple");
+        return wait(500)
+    })
+    .then(()=>{
+        el.classList.add("timeOut")
+    })
+}
+
+
+async function animate2(e){
+    const el = e.currentTarget;
+    el.textContent = "Go!"
+    await wait(200)
+    el.classList.add("circle");
+    await wait(500)
+    el.classList.add("red")
+    await wait(250)
+    el.classList.remove("circle");
+    await wait(500)
+    el.classList.remove("red")
+    el.classList.add("purple");
+    await wait(500)
+    el.classList.add("timeOut")
+}
+
+go.addEventListener("click", animate2)
