@@ -17,18 +17,21 @@ function makePizza (toppings = []) {
      });
 }
 
+function handleError(err) {
+    console.log("ohhh noooooo");
+    console.log(err)
+}
+
 async function go(){
-    try{
         const pizza = await makePizza(["pineapple"]);
         console.log(pizza)
-    } catch (err){
-        console.log("ohh noooo")
-        console.log(err)
-    }
+        return pizza;
 }
     
-go()
+go().then(result=>{
+    console.log(result)
 
+}).catch(handleError);
 
 
 
