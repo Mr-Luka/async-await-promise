@@ -34,7 +34,10 @@ go().then(result=>{
 }).catch(handleError);
 
 
-
+async function goGo(){
+    const result = await go()
+}
+goGo().catch(handleError)
 
 
 
