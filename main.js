@@ -17,67 +17,85 @@ function makePizza (toppings = []) {
      });
 }
 
-async function goo (){
-    console.log("starting");
-    await wait(2000)
-    console.log("ending");
+async function go(){
+    try{
+        const pizza = await makePizza(["pineapple"]);
+        console.log(pizza)
+    } catch (err){
+        console.log("ohh noooo")
+        console.log(err)
+    }
 }
-// goo()
-
-async function makeDinner(){
-    const pizzaPromise1 = makePizza(["vegan pepperoni"]);
-    const pizzaPromise2 = makePizza(["spinach"]);
-    const [vegPep, spin] = await Promise.all([pizzaPromise1, pizzaPromise2]);
-    console.log(vegPep, spin)
-}
-makeDinner()
-
-
-const go = document.querySelector(".go");
+    
+go()
 
 
 
-function animate(e){
-    const el = e.currentTarget;
-    el.textContent = "Go!"
-    wait(200)
-    .then(()=>{
-        el.classList.add("circle");
-        return wait(500)
-    })
-    .then(()=> {
-        el.classList.add("red")
-        return wait(250)
-    })
-    .then(()=>{
-        el.classList.remove("circle");
-        return wait(500)
-    })
-    .then(()=> {
-        el.classList.remove("red")
-        el.classList.add("purple");
-        return wait(500)
-    })
-    .then(()=>{
-        el.classList.add("timeOut")
-    })
-}
 
 
-async function animate2(e){
-    const el = e.currentTarget;
-    el.textContent = "Go!"
-    await wait(200)
-    el.classList.add("circle");
-    await wait(500)
-    el.classList.add("red")
-    await wait(250)
-    el.classList.remove("circle");
-    await wait(500)
-    el.classList.remove("red")
-    el.classList.add("purple");
-    await wait(500)
-    el.classList.add("timeOut")
-}
 
-go.addEventListener("click", animate2)
+
+// async function goo (){
+//     console.log("starting");
+//     await wait(2000)
+//     console.log("ending");
+// }
+// // goo()
+
+// async function makeDinner(){
+//     const pizzaPromise1 = makePizza(["vegan pepperoni"]);
+//     const pizzaPromise2 = makePizza(["spinach"]);
+//     const [vegPep, spin] = await Promise.all([pizzaPromise1, pizzaPromise2]);
+//     console.log(vegPep, spin)
+// }
+// makeDinner()
+
+
+// const go = document.querySelector(".go");
+
+
+
+// function animate(e){
+//     const el = e.currentTarget;
+//     el.textContent = "Go!"
+//     wait(200)
+//     .then(()=>{
+//         el.classList.add("circle");
+//         return wait(500)
+//     })
+//     .then(()=> {
+//         el.classList.add("red")
+//         return wait(250)
+//     })
+//     .then(()=>{
+//         el.classList.remove("circle");
+//         return wait(500)
+//     })
+//     .then(()=> {
+//         el.classList.remove("red")
+//         el.classList.add("purple");
+//         return wait(500)
+//     })
+//     .then(()=>{
+//         el.classList.add("timeOut")
+//     })
+// }
+
+
+// async function animate2(e){
+//     const el = e.currentTarget;
+//     el.textContent = "Go!"
+//     await wait(200)
+//     el.classList.add("circle");
+//     await wait(500)
+//     el.classList.add("red")
+//     await wait(250)
+//     el.classList.remove("circle");
+//     await wait(500)
+//     el.classList.remove("red")
+//     el.classList.add("purple");
+//     await wait(500)
+//     el.classList.add("timeOut")
+// }
+
+// go.addEventListener("click", animate2)
