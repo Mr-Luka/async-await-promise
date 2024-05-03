@@ -37,8 +37,17 @@ go().then(result=>{
 async function goGo(){
     const result = await go()
 }
-goGo().catch(handleError)
+// catch it at run time
+// goGo().catch(handleError)
 
+// make a safe function with a HOF
+function makeSafe(fn, errorHandler) {
+    return function (){
+        fn().catch(errorHandler);
+    }
+}
+const safeGo = makeSafe(go, handleError);
+safeGo()
 
 
 // async function goo (){
